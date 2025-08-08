@@ -1,0 +1,635 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-image: url("bg.jpg");
+  background-size: 100% 100%;
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative;
+  z-index: 20;
+}
+ 
+
+
+.logo {
+  color: white;
+  font-size: 40px;
+}
+
+.select-box {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  right: 60px;
+}
+
+.select-heading {
+  background-color: aliceblue;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.select-heading img {
+  transition: all 0.3s;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(240, 248, 255, 0.838);
+  backdrop-filter: blur(5px);
+  margin-top: 20px;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 20px;
+  display: none;
+}
+
+.active-options {
+  display: flex;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.option {
+  border-radius: 20px;
+  padding: 10px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: aliceblue;
+  letter-spacing: 1px;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+main {
+  width: 100%;
+  height: calc(100% - 80px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-box {
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  bottom: 10%;
+  right: 5%;
+  background-color: rgba(240, 248, 255, 0.457);
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  padding: 10px;
+  transform: translateX(600px);
+  transition: all 0.5s;
+  z-index: 25;
+}
+
+.active-chat-box {
+  transform: translateX(0px);
+}
+
+.chat-container {
+  width: 100%;
+  height: 80%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 20px;
+}
+
+.input-area {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: fixed;
+  bottom: 0;
+}
+
+.prompt {
+  width: 60%;
+  padding: 10px;
+  background: black;
+  color: white;
+  font-size: 19px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.input-area button {
+  padding: 10px;
+  background: black;
+  border: none;
+  border-radius: 50px;
+}
+
+.user-chat-box {
+  width: 80%;
+  padding: 20px;
+  background-color: black;
+  border-radius: 50px 0px 50px 50px;
+  position: relative;
+  left: 90px;
+  color: white;
+}
+
+.ai-chat-box {
+  width: 80%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.644);
+  border-radius: 0px 50px 50px 50px;
+  position: relative;
+  left: 0px;
+  color: white;
+}
+
+.h1 {
+  font-size: 3vw;
+  text-align: center;
+}
+
+#chatbotimg {
+  cursor: pointer;
+}
+
+.options a {
+  text-decoration: none;
+  color: black;
+}
+
+.bgtext {
+  font-size: 10vw;
+  text-align: center;
+  color: rgba(240, 248, 255, 0.482);
+}
+
+.virtual-assistant {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  filter: drop-shadow(2px 2px 10px rgb(65, 152, 214));
+}
+
+.virtual-assistant img {
+  cursor: pointer;
+}
+
+.speak-page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.525);
+  backdrop-filter: blur(5px);
+  z-index: 30;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  display: none;
+}
+
+.speak-page h1 {
+  color: white;
+}
+
+#voice {
+  margin-top: 30px;
+  border-radius: 50%;
+}
+
+/* New Phase 2 Sections */
+
+.bmi-section, .calorie-section, .workout-plan-section, .calorie-burn-section, .fitness-tip-section, .diet-plan-section {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.bmi-section input, .calorie-section input, .calorie-section select,
+.workout-plan-section select, .calorie-burn-section select, .calorie-burn-section input, 
+.fitness-tip-section button, .diet-plan-section select {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  border: none;
+}
+
+.bmi-section button, .calorie-section button, .workout-plan-section button,
+.calorie-burn-section button, .fitness-tip-section button, .diet-plan-section button {
+  padding: 10px 20px;
+  background: #0b5394;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+.workout-plan-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  display: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.workout-plan-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.workout-plan-section select {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-right: 15px;
+  outline: none;
+}
+
+.workout-plan-section button {
+  padding: 12px 25px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.workout-plan-section button:hover {
+  background-color: #0056b3;
+}
+
+#workout-plan-result {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.bmi-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.bmi-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.bmi-section input {
+  padding: 12px;
+  margin: 8px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  width: 200px;
+}
+
+.bmi-section button {
+  padding: 12px 25px;
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.bmi-section button:hover {
+  background-color: #117a8b;
+}
+
+#bmi-result {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.calorie-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 650px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.calorie-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.calorie-section input, .calorie-section select {
+  padding: 12px;
+  margin: 8px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  width: 200px;
+}
+
+.calorie-section button {
+  padding: 12px 25px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.calorie-section button:hover {
+  background-color: #e0a800;
+}
+
+#calorie-result {
+  margin-top: 20px;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.fitness-tip-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.fitness-tip-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.fitness-tip-section button {
+  padding: 12px 25px;
+  background-color: #17a2b8;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.fitness-tip-section button:hover {
+  background-color: #138496;
+}
+
+#fitness-tip-result {
+  font-size: 22px;
+  font-style: italic;
+}
+
+.diet-plan-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.diet-plan-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.diet-plan-section select {
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  width: 200px;
+}
+
+.diet-plan-section button {
+  padding: 12px 25px;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.diet-plan-section button:hover {
+  background-color: #bd2130;
+}
+
+#diet-plan-result {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre-line;
+}
+
+.calorie-burn-section {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.calorie-burn-section h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.calorie-burn-section select,
+.calorie-burn-section input {
+  padding: 12px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+  width: 200px;
+}
+
+.calorie-burn-section button {
+  padding: 12px 25px;
+  background-color: #ff5722;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.calorie-burn-section button:hover {
+  background-color: #e64a19;
+}
+
+#burn-result {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.fitness-dashboard {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin: 30px auto;
+  border-radius: 20px;
+  max-width: 1000px;
+}
+
+.dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.dashboard-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  width: 250px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dashboard-card h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card button {
+  padding: 10px 20px;
+  background-color: #ffc107;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dashboard-card button:hover {
+  background-color: #e0a800;
+}
+
+.close-dashboard-btn {
+  display: block;
+  margin: 0 auto 20px auto;
+  padding: 10px 20px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.close-dashboard-btn:hover {
+  background-color: #c82333;
+}

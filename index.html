@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Powered Fitness Website</title>
+  <link rel="stylesheet" href="style.css">
+   
+
+</head>
+<body>
+
+  <nav>
+     
+    <a href="index.html"><h1 class="logo">Fit Club</h1></a>
+     
+    <div class="right-nav">
+       
+      <div class="select-box">
+        <div class="select-heading"><span>All Workout</span> <img src="arrow.svg" alt="img"></div>
+        <div class="options">
+          <a href="workout.html"><div class="option">All Workout</div></a>
+          <a href="back.html"><div class="option">Back Workout</div></a>
+          <a href="chest.html"><div class="option">Chest Workout</div></a>
+          <a href="biceps-triceps.html"><div class="option">Biceps & Triceps</div></a>
+          <a href="shoulder.html"><div class="option">Shoulder</div></a>
+          <a href="leg.html"><div class="option">Leg Workout</div></a>
+        </div>
+      </div>
+      <img src="chatbot.svg" alt="img" id="chatbotimg">
+    </div>
+  </nav>
+
+  <main>
+    <h1 class="bgtext">AI Powered Fitness Website</h1>
+
+    <!-- AI Chatbot -->
+    <div class="chat-box">
+      <div class="h1">Talk to your own assistant...</div>
+      <div class="chat-container"></div>
+      <div class="input-area">
+        <input type="text" class="prompt" placeholder="ask anything...">
+        <button><img src="btn.svg" alt="img"></button>
+      </div>
+    </div>
+
+    <!-- Virtual Assistant Icon -->
+    <div class="virtual-assistant">
+      <img src="ai.png" alt="img" width="120px">
+    </div>
+
+    <!-- Speak Page Overlay -->
+    <div class="speak-page">
+      <img src="ai.png" alt="img" width="200px">
+      <h1>speak Now</h1>
+      <img src="voice.gif" alt="img" width="200px" id="voice">
+    </div>
+
+    <!-- Fitness Tools Dashboard -->
+<div class="fitness-dashboard" style="display:none;">
+  <h2 style="text-align:center; color:white; margin-bottom: 30px;">Fitness Tools Dashboard</h2>
+  <button class="close-dashboard-btn" onclick="document.querySelector('.fitness-dashboard').style.display='none'">Close Dashboard</button>
+
+  <div class="dashboard-cards">
+
+    <div class="dashboard-card">
+      <h3>Workout Plan Generator</h3>
+      <button onclick="hideAllSections(); document.querySelector('.workout-plan-section').style.display='block'">Open</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>BMI Calculator</h3>
+      <button onclick="hideAllSections(); document.querySelector('.bmi-section').style.display='block'">Open</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Calorie Estimator</h3>
+      <button onclick="hideAllSections(); document.querySelector('.calorie-section').style.display='block'">Open</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Fitness Tip</h3>
+      <button onclick="hideAllSections(); document.querySelector('.fitness-tip-section').style.display='block'; showFitnessTip()">Open</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Diet Plan</h3>
+      <button onclick="hideAllSections(); document.querySelector('.diet-plan-section').style.display='block'">Open</button>
+    </div>
+
+    <div class="dashboard-card">
+      <h3>Calories Burned Estimator</h3>
+      <button onclick="hideAllSections(); document.querySelector('.calorie-burn-section').style.display='block'">Open</button>
+    </div>
+
+  </div>
+</div>
+
+
+    <!-- BMI Calculator -->
+    <div class="bmi-section" style="display:none;">
+      <h2>BMI Calculator</h2>
+      <input type="number" id="height" placeholder="Height (cm)">
+      <input type="number" id="weight" placeholder="Weight (kg)">
+      <button onclick="calculateBMI()">Calculate BMI</button>
+      <p id="bmi-result"></p>
+      <button onclick="savePreferences()">Save Preferences</button>
+    </div>
+
+    <!-- Calorie Requirement Estimator -->
+    <div class="calorie-section" style="display:none;">
+      <h2>Calorie Requirement Estimator</h2>
+      <input type="number" id="age" placeholder="Age">
+      <input type="number" id="cal-height" placeholder="Height (cm)">
+      <input type="number" id="cal-weight" placeholder="Weight (kg)">
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <select id="activity">
+        <option value="1.2">Sedentary</option>
+        <option value="1.375">Lightly Active</option>
+        <option value="1.55">Moderately Active</option>
+        <option value="1.725">Very Active</option>
+        <option value="1.9">Super Active</option>
+      </select>
+      <button onclick="calculateCalories()">Estimate</button>
+      <p id="calorie-result"></p>
+    </div>
+
+    <!-- Workout Plan Generator -->
+    <div class="workout-plan-section" style="display:none;">
+      <h2>Workout Plan Generator</h2>
+      <select id="muscle-group">
+        <option value="legs">Legs</option>
+        <option value="chest">Chest</option>
+        <option value="back">Back</option>
+        <option value="shoulders">Shoulders</option>
+        <option value="arms">Arms</option>
+      </select>
+      <button onclick="generateWorkout()">Generate Plan</button>
+      <p id="workout-plan-result"></p>
+    </div>
+
+  <!-- Calories Burned Estimator -->
+    <div class="calorie-burn-section" style="display:none;">
+      <h2>Calories Burned Estimator</h2>
+      <select id="activity-type">
+        <option value="running">Running</option>
+        <option value="cycling">Cycling</option>
+        <option value="walking">Walking</option>
+        <option value="yoga">Yoga</option>
+      </select>
+      <input type="number" id="duration" placeholder="Duration (minutes)">
+      <button onclick="estimateCaloriesBurned()">Estimate</button>
+      <p id="burn-result"></p>
+    </div>
+
+    <!-- Fitness Tip of the Day -->
+    <div class="fitness-tip-section" style="display:none;">
+      <h2>Fitness Tip of the Day</h2>
+      <button onclick="showFitnessTip()">Show Tip</button>
+      <p id="fitness-tip-result"></p>
+    </div>
+
+    <!-- Diet Plan Suggestion -->
+    <div class="diet-plan-section" style="display:none;">
+      <h2>Diet Plan Suggestion</h2>
+      <select id="goal">
+        <option value="weight loss">Weight Loss</option>
+        <option value="muscle gain">Muscle Gain</option>
+        <option value="maintenance">Maintenance</option>
+      </select>
+      <button onclick="showDietPlan()">Show Plan</button>
+      <p id="diet-plan-result"></p>
+    </div>
+
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+  <script src="fitness_qa_dataset.js"></script> <!-- You'll load the JSON here -->
+
+
+  <script src="script.js"></script>
+</body>
+</html>
